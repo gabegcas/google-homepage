@@ -1,116 +1,190 @@
+:root {
+    --light-grey-color: #f2f2f2;
+    --sign-in-button-color: #4386f9;
+    --font-color: black;
+    --darker-grey-color: #dfe1e5;
+}
+
 * {
     padding: 0;
     margin: 0;
 }
 
-li {
+a, li, p, button {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
 }
 
-a {
-    color: darkslategrey;
-    text-decoration: none;
-}
-
-ul {
-    list-style: none;
+/* Global Font CSS */
+li {
+    list-style-type: none;
 }
 
 /* Grid Container */
 .container {
     display: grid;
-    grid-template-rows: 100px 90vh 1fr;
-    grid-template: 
-        ".nav-about .nav-profile"
-        "main main"
-        ".footer-links .footer-settings";
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+    justify-content: center;
+    height: 100vh;
 }
 
-/* header */
-.nav-container {
+/* Header CSS */
+
+header {
+    grid-area: header;
     padding: 10px;
 }
 
-.nav-container nav {
-    display: flex;
-    justify-content: space-between;
+header nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "about profile";
+    align-items: center;
+}
+
+.nav-about {
+    grid-area: about;
+    justify-self: start;
 }
 
 .nav-about li {
     display: inline;
-    padding: 10px;
+    padding: 5px;
+    margin: 5px;
 }
 
+.nav-about a {
+    color: var(--font-color);
+    text-decoration: none;
+}
 
-.nav-profile li, button {
+.nav-profile {
+    grid-area: profile;
+    justify-self: end;
+}
+
+.nav-profile li {
     display: inline;
-    padding: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.nav-profile a {
+    color: var(--font-color);
+    text-decoration: none;
 }
 
 .nav-profile button {
+    background-color: var(--sign-in-button-color);
+    color: white;
+    font-weight: bold;
     border: none;
     border-radius: 2px;
-    background-color: #4285F4;
-    color: white;
-    padding-left: 10px;
-    padding-right: 10px;
+    box-shadow: none;
+    padding: 5px 12px 5px 12px;
 }
 
-/* main content */
+/* Main CSS */
 
+main {
+    grid-area: main;
+    justify-items: center;
+    padding: 40px 0 0 40px;
+}
 
 .search-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
 }
 
-#main-logo {
-    width: 100%;
-    height: auto;
-    max-width: 500px;
-}
-
-#search-input {
-    width: 500px;
-    padding: 1rem;
-    border: 1px solid lightgray;
-    border-radius: 20px;
+.search-container form {
+    padding: 10px;
 }
 
 .button-container {
     display: flex;
     justify-content: center;
+    padding: 20px;
 }
 
 .button-container button {
-    margin: 10px;
-    background-color: lightgray;
+    background-color: var(--light-grey-color);
+    color: var(--font-color);
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
+    padding: 10px 15px 10px 15px;
+    margin: 5px;
 }
 
-/* footer */
+#search-input {
+    border: 1px solid var(--darker-grey-color);
+    border-radius: 20px;
+    padding: 1rem 30px 1rem 30px;
+    width: 400px;
+    font-size: 1.4rem;
+}
+
+#main-logo {
+    max-width: 400px;
+    height: 100%;
+    align-self: center;
+}
+
+/* Footer CSS */
 
 footer {
-    padding: 20px;
-    background-color: lightgrey;
-    position: 0;
+    grid-area: footer;
+    background-color: var(--light-grey-color);
+    padding: 10px;
+    align-items: center;
 }
 
-footer nav {
-    display: flex;
-    justify-content: space-between;
+footer nav{ 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "links settings";
+    align-items: center;
+    display: grid;
+    padding: 10px 0 0 0;
+}
+
+.footer-links {
+    grid-area: links;
+    justify-self: start;
 }
 
 .footer-links li {
     display: inline;
-    padding: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.footer-links a {
+    color: var(--font-color);
+    text-decoration: none;
+}
+
+.footer-settings {
+    grid-area: settings;
+    justify-self: end;
 }
 
 .footer-settings li {
     display: inline;
-    padding: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.footer-settings a {
+    color: var(--font-color);
+    text-decoration: none;
 }
